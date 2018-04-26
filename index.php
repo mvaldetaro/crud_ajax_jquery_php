@@ -13,7 +13,7 @@
 <body>
 
     <div class="container box">
-        <h1>Crud Ajax com jQuery usando PHP PDO</h1>
+        <h1>CRUD Ajax com jQuery usando PHP PDO</h1>
         <div class="table-responsive">
            <table id="user_data" class="table table-bordered table-striped">
                 <thead>
