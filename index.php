@@ -14,6 +14,12 @@
 
     <div class="container box">
         <h1>CRUD Ajax com jQuery usando PHP PDO</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-primary">Adicionar usuário</button>
+            </div>
+        </div>
+        <br>
         <div class="table-responsive">
            <table id="user_data" class="table table-bordered table-striped">
                 <thead>
@@ -29,6 +35,36 @@
                     
                 </tbody>
            </table> 
+        </div>
+    </div>
+
+    <div id="userModal" class="modal fade">
+        <div class="modal-dialog">
+            <form method="post" id="user_form" enctype="multipart/form-data">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">Adicionar usuário</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label for="first_name">Nome:</label>
+                        <input type="text" name="first_name" id="first_name" class="form-control">
+                        <br>
+                        <label for="last_name">Sobrenome:</label>
+                        <input type="text" name="last_name" id="last_name" class="form-control">
+                        <br>
+                        <label for="user_image">Selecione a imagem do usuário:</label>
+                        <input type="file" name="user_image" id="user_image">
+                        <span id="user_upload_image"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="user_id" id="user_id" />
+                        <input type="hidden" name="operation" id="operation" />
+                        <input type="submit" name="action" id="action" class="btn btn-success" value="Add" /> </div>
+                </div>    
+            </form>
         </div>
     </div>
     

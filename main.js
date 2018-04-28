@@ -21,5 +21,37 @@ $(document).ready(function(){
                 "orderable": false
             },
         ],
-    })
+    });
+
+    $(document).on('submit', '#user_form', function(event){
+        event.preventDefault();
+        var firstName = $('#first_name').val();
+        var lastName = $('#last_name').val();
+        var extension = $('#user_image').val().split('.').pop().toLowerCase();
+        if(extension != '') {
+            if(jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                alert("Invalid Image File");
+                $('#user_image').val('');
+                return false;
+            }
+        }
+
+        if(firstName != '' && lastName != '') {
+            $.ajax({
+                url:"insert.php",
+                method:"POST",
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    alert(data);
+                    $('#user_form')[0].reset();
+                    $('#userModal').modal('hide');
+                    dataTable.ajax.reload();
+                }
+            });
+        } else {
+            alert("Ambos os campos são obrigatórios.")
+        }
+    });
 });
