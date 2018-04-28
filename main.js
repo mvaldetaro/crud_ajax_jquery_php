@@ -75,4 +75,22 @@ $(document).ready(function(){
         });
     });
 
+    $(document).on('click', '.delete', function(){
+        var user_id = $(this).attr('id');
+        if (confirm("Deseja realmente excluir este usuário?")) {
+            $.ajax({
+                url:"delete.php",
+                method: "POST",
+                data: {user_id:user_id},
+                success:function(data){
+                    alert(data);
+                    dataTable.ajax.reload();
+                }
+            });    
+        } else {
+            return false;
+        }
+        
+    });
+
 });
