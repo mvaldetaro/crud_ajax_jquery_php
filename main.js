@@ -54,4 +54,25 @@ $(document).ready(function(){
             alert("Ambos os campos são obrigatórios.")
         }
     });
+
+    $(document).on('click', '.update', function(){
+        var user_id = $(this).attr('id');
+        $.ajax({
+            url:"fetch_single.php",
+            method: "POST",
+            data: {user_id: user_id}, 
+            dataType: "json",
+            success: function(data){
+                $('#userModal').modal('show');
+                $('#first_name').val(data.first_name);
+                $('#last_name').val(data.last_name);
+                $('.modal-title').text("Editar dados do Usuário");
+                $('#user_id').val(user_id);
+                $('#user_upload_image').html(data.user_image);
+                $('#action').val("Atualizar");
+                $('#operation').val("Edit");
+            }
+        });
+    });
+
 });

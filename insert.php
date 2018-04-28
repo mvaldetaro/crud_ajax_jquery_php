@@ -23,5 +23,31 @@
                 echo 'Dados cadastrados';
             }
         }
+
+
+        if($_POST["operation"] == "Edit"){
+            $image = '';
+            if($_FILES["user_image"]["name"] != '') {
+                $image = upload_image();
+            } else {
+                $image = $_POST["hidden_user_image"];
+            }
+
+            $statement = $connection->prepare(
+                "UPDATE users
+                 SET first_name = :first_name, last_name = :last_name, image = :image 
+                 WHERE id = :id"
+            );
+
+            $statement->execute(
+                array(
+                    ':first_name' => $_POST["first_name"],
+                    ':last_name' => $_POST["last_name"],
+                    ':image' => $image,
+                    ':id' => $_POST["user_id"]
+                )
+            );
+            echo 'Dados atualizados';
+        }
     }
 ?>
