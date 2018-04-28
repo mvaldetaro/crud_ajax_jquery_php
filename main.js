@@ -9,7 +9,7 @@ $(document).ready(function(){
 
     var dataTable = $('#user_data').DataTable({
         "processing": true,
-        "serveSide": true,
+        "serverSide": true,
         "order": [],
         "ajax": {
             url: "fetch.php",
